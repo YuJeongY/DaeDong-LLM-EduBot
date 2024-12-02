@@ -3,16 +3,14 @@ import os
 import streamlit as st
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
-from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import DataFrameLoader
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.tools.retriever import create_retriever_tool
 from langchain.prompts import ChatPromptTemplate
-import tempfile
-from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 import pandas as pd
+
 # .env 파일 로드
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 # API 키를 환경변수로 관리하기 위한 설정 파일
@@ -37,17 +35,6 @@ def load_excel_with_metadata(file_path):
             doc.metadata["sheet_name"] = sheet_name
             doc.metadata["cell_range"] = f"A1:{df.columns[-1]}{len(df)}"  # 추가 셀 범위 정보
         documents.extend(sheet_docs)
-    return documents
-
-
-# 폴더 내 모든 문서를 로드
-
-def load_documents_from_folder(folder_path):
-    documents = []
-    for file_name in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, file_name)
-        if file_name.endswith(".xlsx") or file_name.endswith(".xls"):
-            documents.extend(load_excel_with_metadata(file_path))
     return documents
 
 
@@ -78,10 +65,10 @@ vector = FAISS.from_documents(all_docs, OpenAIEmbeddings())
 retriever = vector.as_retriever()
 
 # 도구 정의
-retriever_tool = create_retriever_tool(
+excel_tool = create_retriever_tool(
     retriever,
-    name="pdf_search",
-    description="Use this tool to search information from the pdf document"
+    name="excel_search",
+    description="Use this tool to search information from the excel document"
 )
 
 # Streamlit 메인 코드
@@ -102,7 +89,7 @@ def main():
 
 
 # return retriever_tool
-    tools = [retriever_tool]
+    tools = [excel_tool]
 
     # LLM 설정
     llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
@@ -118,7 +105,7 @@ def main():
                 Hello! 😊 I’m *Daedong Vision-i*, your dedicated assistant chatbot for employee capability enhancement!  
                 My mission is to help employees quickly and conveniently find the training courses they need.
 
-                Here’s the detailed information I’ll provide:  
+                Here’s the detailed information using `excel_search` I’ll provide:  
                 - I can also provide a **full list of available courses** if required!  
                 1️⃣ **Course Name**: The exact name of the course so you can easily identify it.  
                 2️⃣ **Training Purpose**: The goals and objectives of the training to understand how it benefits you or your team.  
