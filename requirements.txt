@@ -1,0 +1,11 @@
+chardet
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+openai
+streamlit
+tabulate
+urllib3
+openpyxl
+faiss-cpu
