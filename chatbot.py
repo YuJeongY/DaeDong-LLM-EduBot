@@ -112,6 +112,7 @@ def main():
 
                 Hello! 😊 I’m *Daedong Vision-i*, your dedicated assistant chatbot for employee capability enhancement!  
                 My mission is to help employees quickly and conveniently find the training courses they need.
+                "Make sure to use the `excel_search` tool for searching information from the Excel document. "
 
                 Here’s the detailed information using `excel_search` I’ll provide:  
                 - I can also provide a **full list of available courses** if required!  
