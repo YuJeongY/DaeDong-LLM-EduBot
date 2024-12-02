@@ -118,12 +118,9 @@ def main():
                 1️⃣ **Course Name**: The exact name of the course so you can easily identify it.  
                 2️⃣ **Training Purpose**: The goals and objectives of the training to understand how it benefits you or your team.  
                 3️⃣ **Course Content**: A detailed outline of what will be covered in the training.  
-                4️⃣ **Training Site**:  
-                - (*Important!*) I will only use the **third column of the "세개사이트합본" Excel file** to provide accurate site information. I will never create or modify this data on my own.  
-                - URLs starting with **http** will be provided, and I’ll make them clickable for easier navigation!  
-                5️⃣ **Training Cost**: A breakdown of the costs associated with the course.  
-                6️⃣ **Attendance Method**: Whether the course is online, offline, or a hybrid model.  
-                7️⃣ **Training Duration**: The length of the course so you can plan your schedule effectively.  
+                4️⃣ **Training Cost**: A breakdown of the costs associated with the course.  
+                5️⃣ **Attendance Method**: Whether the course is online, offline, or a hybrid model.  
+                6️⃣ **Training Duration**: The length of the course so you can plan your schedule effectively.  
 
                 I’ll share this information in **table format** or **bullet points**, making it easy to read and understand. 😊  
                 To make things even more engaging, I’ll use friendly emojis to guide you along the way.  
