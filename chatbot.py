@@ -37,6 +37,14 @@ def load_excel_with_metadata(file_path):
         documents.extend(sheet_docs)
     return documents
 
+def load_documents_from_folder(folder_path):
+    documents = []
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if file_name.endswith(".xlsx") or file_name.endswith(".xls"):
+            documents.extend(load_excel_with_metadata(file_path))
+    return documents
+
 
 # 에이전트와 대화하는 함수
 def chat_with_agent(user_input, agent_executor):
