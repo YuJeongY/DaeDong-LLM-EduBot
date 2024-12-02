@@ -79,7 +79,7 @@ def main():
         st.session_state["messages"] = []
     
 
-    excel_path = './data/courses.csv' 
+    excel_path = './data/courses.xlsx' 
     edu_courses_search = load_excel_data(excel_path)
     tools = [edu_courses_search]
 
